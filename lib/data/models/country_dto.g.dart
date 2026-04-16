@@ -7,61 +7,79 @@ part of 'country_dto.dart';
 // **************************************************************************
 
 CountryDto _$CountryDtoFromJson(Map<String, dynamic> json) => CountryDto(
-  tld: (json['tld'] as List<dynamic>).map((e) => e as String).toList(),
-  cca2: json['cca2'] as String,
-  ccn3: json['ccn3'] as String,
-  cca3: json['cca3'] as String,
+  tld: (json['tld'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  cca2: json['cca2'] as String?,
+  ccn3: json['ccn3'] as String?,
+  cca3: json['cca3'] as String?,
   cioc: json['cioc'] as String?,
-  independent: json['independent'] as bool,
-  status: json['status'] as String,
-  unMember: json['unMember'] as bool,
-  idd: IddDto.fromJson(json['idd'] as Map<String, dynamic>),
-  capital: (json['capital'] as List<dynamic>).map((e) => e as String).toList(),
-  altSpellings: (json['altSpellings'] as List<dynamic>)
-      .map((e) => e as String)
+  independent: json['independent'] as bool?,
+  status: json['status'] as String?,
+  unMember: json['unMember'] as bool?,
+  idd: json['idd'] == null
+      ? null
+      : IddDto.fromJson(json['idd'] as Map<String, dynamic>),
+  capital: (json['capital'] as List<dynamic>?)
+      ?.map((e) => e as String)
       .toList(),
-  region: json['region'] as String,
-  subregion: json['subregion'] as String,
-  landlocked: json['landlocked'] as bool,
-  borders: (json['borders'] as List<dynamic>).map((e) => e as String).toList(),
-  area: (json['area'] as num).toDouble(),
-  maps: MapsDto.fromJson(json['maps'] as Map<String, dynamic>),
-  population: (json['population'] as num).toInt(),
-  fifa: json['fifa'] as String,
-  car: CarDto.fromJson(json['car'] as Map<String, dynamic>),
-  timezones: (json['timezones'] as List<dynamic>)
-      .map((e) => e as String)
+  altSpellings: (json['altSpellings'] as List<dynamic>?)
+      ?.map((e) => e as String)
       .toList(),
-  continents: (json['continents'] as List<dynamic>)
-      .map((e) => e as String)
+  region: json['region'] as String?,
+  subregion: json['subregion'] as String?,
+  landlocked: json['landlocked'] as bool?,
+  borders: (json['borders'] as List<dynamic>?)
+      ?.map((e) => e as String)
       .toList(),
-  flag: json['flag'] as String,
-  name: NameDto.fromJson(json['name'] as Map<String, dynamic>),
-  currencies: (json['currencies'] as Map<String, dynamic>).map(
+  area: (json['area'] as num?)?.toDouble(),
+  maps: json['maps'] == null
+      ? null
+      : MapsDto.fromJson(json['maps'] as Map<String, dynamic>),
+  population: (json['population'] as num?)?.toInt(),
+  fifa: json['fifa'] as String?,
+  car: json['car'] == null
+      ? null
+      : CarDto.fromJson(json['car'] as Map<String, dynamic>),
+  timezones: (json['timezones'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  continents: (json['continents'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  flag: json['flag'] as String?,
+  name: json['name'] == null
+      ? null
+      : NameDto.fromJson(json['name'] as Map<String, dynamic>),
+  currencies: (json['currencies'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, CurrencyDto.fromJson(e as Map<String, dynamic>)),
   ),
-  languages: Map<String, String>.from(json['languages'] as Map),
-  latlng: (json['latlng'] as List<dynamic>)
-      .map((e) => (e as num).toDouble())
+  languages: (json['languages'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(k, e as String),
+  ),
+  latlng: (json['latlng'] as List<dynamic>?)
+      ?.map((e) => (e as num).toDouble())
       .toList(),
-  demonyms: DemonymsDto.fromJson(json['demonyms'] as Map<String, dynamic>),
-  translations: (json['translations'] as Map<String, dynamic>).map(
+  demonyms: json['demonyms'] == null
+      ? null
+      : DemonymsDto.fromJson(json['demonyms'] as Map<String, dynamic>),
+  translations: (json['translations'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, TranslationDto.fromJson(e as Map<String, dynamic>)),
   ),
-  gini: (json['gini'] as Map<String, dynamic>).map(
+  gini: (json['gini'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  flags: FlagsDto.fromJson(json['flags'] as Map<String, dynamic>),
-  coatOfArms: CoatOfArmsDto.fromJson(
-    json['coatOfArms'] as Map<String, dynamic>,
-  ),
-  startOfWeek: json['startOfWeek'] as String,
-  capitalInfo: CapitalInfoDto.fromJson(
-    json['capitalInfo'] as Map<String, dynamic>,
-  ),
-  postalCode: PostalCodeDto.fromJson(
-    json['postalCode'] as Map<String, dynamic>,
-  ),
+  flags: json['flags'] == null
+      ? null
+      : FlagsDto.fromJson(json['flags'] as Map<String, dynamic>),
+  coatOfArms: json['coatOfArms'] == null
+      ? null
+      : CoatOfArmsDto.fromJson(json['coatOfArms'] as Map<String, dynamic>),
+  startOfWeek: json['startOfWeek'] as String?,
+  capitalInfo: json['capitalInfo'] == null
+      ? null
+      : CapitalInfoDto.fromJson(json['capitalInfo'] as Map<String, dynamic>),
+  postalCode: json['postalCode'] == null
+      ? null
+      : PostalCodeDto.fromJson(json['postalCode'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$CountryDtoToJson(
@@ -75,7 +93,7 @@ Map<String, dynamic> _$CountryDtoToJson(
   'independent': instance.independent,
   'status': instance.status,
   'unMember': instance.unMember,
-  'idd': instance.idd.toJson(),
+  'idd': instance.idd?.toJson(),
   'capital': instance.capital,
   'altSpellings': instance.altSpellings,
   'region': instance.region,
@@ -83,31 +101,31 @@ Map<String, dynamic> _$CountryDtoToJson(
   'landlocked': instance.landlocked,
   'borders': instance.borders,
   'area': instance.area,
-  'maps': instance.maps.toJson(),
+  'maps': instance.maps?.toJson(),
   'population': instance.population,
   'fifa': instance.fifa,
-  'car': instance.car.toJson(),
+  'car': instance.car?.toJson(),
   'timezones': instance.timezones,
   'continents': instance.continents,
   'flag': instance.flag,
-  'name': instance.name.toJson(),
-  'currencies': instance.currencies.map((k, e) => MapEntry(k, e.toJson())),
+  'name': instance.name?.toJson(),
+  'currencies': instance.currencies?.map((k, e) => MapEntry(k, e.toJson())),
   'languages': instance.languages,
   'latlng': instance.latlng,
-  'demonyms': instance.demonyms.toJson(),
-  'translations': instance.translations.map((k, e) => MapEntry(k, e.toJson())),
+  'demonyms': instance.demonyms?.toJson(),
+  'translations': instance.translations?.map((k, e) => MapEntry(k, e.toJson())),
   'gini': instance.gini,
-  'flags': instance.flags.toJson(),
-  'coatOfArms': instance.coatOfArms.toJson(),
+  'flags': instance.flags?.toJson(),
+  'coatOfArms': instance.coatOfArms?.toJson(),
   'startOfWeek': instance.startOfWeek,
-  'capitalInfo': instance.capitalInfo.toJson(),
-  'postalCode': instance.postalCode.toJson(),
+  'capitalInfo': instance.capitalInfo?.toJson(),
+  'postalCode': instance.postalCode?.toJson(),
 };
 
 IddDto _$IddDtoFromJson(Map<String, dynamic> json) => IddDto(
-  root: json['root'] as String,
-  suffixes: (json['suffixes'] as List<dynamic>)
-      .map((e) => e as String)
+  root: json['root'] as String?,
+  suffixes: (json['suffixes'] as List<dynamic>?)
+      ?.map((e) => e as String)
       .toList(),
 );
 
@@ -117,8 +135,8 @@ Map<String, dynamic> _$IddDtoToJson(IddDto instance) => <String, dynamic>{
 };
 
 MapsDto _$MapsDtoFromJson(Map<String, dynamic> json) => MapsDto(
-  googleMaps: json['googleMaps'] as String,
-  openStreetMaps: json['openStreetMaps'] as String,
+  googleMaps: json['googleMaps'] as String?,
+  openStreetMaps: json['openStreetMaps'] as String?,
 );
 
 Map<String, dynamic> _$MapsDtoToJson(MapsDto instance) => <String, dynamic>{
@@ -127,8 +145,8 @@ Map<String, dynamic> _$MapsDtoToJson(MapsDto instance) => <String, dynamic>{
 };
 
 CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
-  signs: (json['signs'] as List<dynamic>).map((e) => e as String).toList(),
-  side: json['side'] as String,
+  signs: (json['signs'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  side: json['side'] as String?,
 );
 
 Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
@@ -137,9 +155,9 @@ Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
 };
 
 NameDto _$NameDtoFromJson(Map<String, dynamic> json) => NameDto(
-  common: json['common'] as String,
-  official: json['official'] as String,
-  nativeName: (json['nativeName'] as Map<String, dynamic>).map(
+  common: json['common'] as String?,
+  official: json['official'] as String?,
+  nativeName: (json['nativeName'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, NativeNameDto.fromJson(e as Map<String, dynamic>)),
   ),
 );
@@ -152,29 +170,35 @@ Map<String, dynamic> _$NameDtoToJson(NameDto instance) => <String, dynamic>{
 
 NativeNameDto _$NativeNameDtoFromJson(Map<String, dynamic> json) =>
     NativeNameDto(
-      official: json['official'] as String,
-      common: json['common'] as String,
+      official: json['official'] as String?,
+      common: json['common'] as String?,
     );
 
 Map<String, dynamic> _$NativeNameDtoToJson(NativeNameDto instance) =>
     <String, dynamic>{'official': instance.official, 'common': instance.common};
 
-CurrencyDto _$CurrencyDtoFromJson(Map<String, dynamic> json) =>
-    CurrencyDto(name: json['name'] as String, symbol: json['symbol'] as String);
+CurrencyDto _$CurrencyDtoFromJson(Map<String, dynamic> json) => CurrencyDto(
+  name: json['name'] as String?,
+  symbol: json['symbol'] as String?,
+);
 
 Map<String, dynamic> _$CurrencyDtoToJson(CurrencyDto instance) =>
     <String, dynamic>{'name': instance.name, 'symbol': instance.symbol};
 
 DemonymsDto _$DemonymsDtoFromJson(Map<String, dynamic> json) => DemonymsDto(
-  eng: GenderDto.fromJson(json['eng'] as Map<String, dynamic>),
-  fra: GenderDto.fromJson(json['fra'] as Map<String, dynamic>),
+  eng: json['eng'] == null
+      ? null
+      : GenderDto.fromJson(json['eng'] as Map<String, dynamic>),
+  fra: json['fra'] == null
+      ? null
+      : GenderDto.fromJson(json['fra'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$DemonymsDtoToJson(DemonymsDto instance) =>
     <String, dynamic>{'eng': instance.eng, 'fra': instance.fra};
 
 GenderDto _$GenderDtoFromJson(Map<String, dynamic> json) =>
-    GenderDto(f: json['f'] as String, m: json['m'] as String);
+    GenderDto(f: json['f'] as String?, m: json['m'] as String?);
 
 Map<String, dynamic> _$GenderDtoToJson(GenderDto instance) => <String, dynamic>{
   'f': instance.f,
@@ -183,17 +207,17 @@ Map<String, dynamic> _$GenderDtoToJson(GenderDto instance) => <String, dynamic>{
 
 TranslationDto _$TranslationDtoFromJson(Map<String, dynamic> json) =>
     TranslationDto(
-      official: json['official'] as String,
-      common: json['common'] as String,
+      official: json['official'] as String?,
+      common: json['common'] as String?,
     );
 
 Map<String, dynamic> _$TranslationDtoToJson(TranslationDto instance) =>
     <String, dynamic>{'official': instance.official, 'common': instance.common};
 
 FlagsDto _$FlagsDtoFromJson(Map<String, dynamic> json) => FlagsDto(
-  png: json['png'] as String,
-  svg: json['svg'] as String,
-  alt: json['alt'] as String,
+  png: json['png'] as String?,
+  svg: json['svg'] as String?,
+  alt: json['alt'] as String?,
 );
 
 Map<String, dynamic> _$FlagsDtoToJson(FlagsDto instance) => <String, dynamic>{
@@ -203,15 +227,15 @@ Map<String, dynamic> _$FlagsDtoToJson(FlagsDto instance) => <String, dynamic>{
 };
 
 CoatOfArmsDto _$CoatOfArmsDtoFromJson(Map<String, dynamic> json) =>
-    CoatOfArmsDto(png: json['png'] as String, svg: json['svg'] as String);
+    CoatOfArmsDto(png: json['png'] as String?, svg: json['svg'] as String?);
 
 Map<String, dynamic> _$CoatOfArmsDtoToJson(CoatOfArmsDto instance) =>
     <String, dynamic>{'png': instance.png, 'svg': instance.svg};
 
 CapitalInfoDto _$CapitalInfoDtoFromJson(Map<String, dynamic> json) =>
     CapitalInfoDto(
-      latlng: (json['latlng'] as List<dynamic>)
-          .map((e) => (e as num).toDouble())
+      latlng: (json['latlng'] as List<dynamic>?)
+          ?.map((e) => (e as num).toDouble())
           .toList(),
     );
 
@@ -220,8 +244,8 @@ Map<String, dynamic> _$CapitalInfoDtoToJson(CapitalInfoDto instance) =>
 
 PostalCodeDto _$PostalCodeDtoFromJson(Map<String, dynamic> json) =>
     PostalCodeDto(
-      format: json['format'] as String,
-      regex: json['regex'] as String,
+      format: json['format'] as String?,
+      regex: json['regex'] as String?,
     );
 
 Map<String, dynamic> _$PostalCodeDtoToJson(PostalCodeDto instance) =>
