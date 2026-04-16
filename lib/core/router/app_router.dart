@@ -1,6 +1,7 @@
 import 'package:country_app_indra/countries/ui/pages/country_details_page.dart';
 import 'package:country_app_indra/countries/ui/pages/country_home_page.dart';
-import 'package:country_app_indra/initial/ui/pages/initial_page.dart';
+import 'package:country_app_indra/users/ui/pages/login_page.dart';
+import 'package:country_app_indra/users/ui/pages/register_page.dart';
 import 'package:go_router/go_router.dart';
 
 enum AppRoutes { initial, login, resgister, countryHome, countryDetails }
@@ -12,14 +13,14 @@ final goRouter = GoRouter(
       path: '/',
       name: AppRoutes.initial.name,
       builder: (context, state) {
-        return InitialPage();
+        return RegisterPage();
       },
       routes: [
         GoRoute(
           path: 'login',
           name: AppRoutes.login.name,
           builder: (context, state) {
-            return CountryDetailsPage();
+            return LoginPage();
           },
         ),
         GoRoute(
