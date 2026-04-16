@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:country_app_indra/data/models/country_dto.dart';
-import 'package:country_app_indra/data/utils/country_api_url.dart';
+import 'package:country_app_indra/countries/data/models/country_dto.dart';
+import 'package:country_app_indra/countries/data/utils/country_api_url.dart';
 import 'package:http/http.dart' as http;
 
 class CountryApiRespository {

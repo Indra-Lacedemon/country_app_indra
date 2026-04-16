@@ -1,5 +1,5 @@
-import 'package:country_app_indra/data/models/country_dto.dart';
-import 'package:country_app_indra/ui/widgets/info_row.dart';
+import 'package:country_app_indra/countries/data/models/country_dto.dart';
+import 'package:country_app_indra/countries/ui/widgets/info_row.dart';
 import 'package:flutter/material.dart';
 
 class CountryDetailCard extends StatelessWidget {

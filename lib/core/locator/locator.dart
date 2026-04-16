@@ -1,4 +1,4 @@
-import 'package:country_app_indra/cubits/country_cubit.dart';
+import 'package:country_app_indra/countries/cubits/country_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt locator = GetIt.instance;

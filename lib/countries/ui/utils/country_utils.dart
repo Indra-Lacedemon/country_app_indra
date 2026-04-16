@@ -1,4 +1,4 @@
-import 'package:country_app_indra/data/models/country_dto.dart';
+import 'package:country_app_indra/countries/data/models/country_dto.dart';
 
 class CountryUtils {
   static const featuredCountries = <String>[
