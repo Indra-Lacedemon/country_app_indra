@@ -1,14 +1,14 @@
 import 'package:country_app_indra/core/locator/locator.dart';
 import 'package:country_app_indra/core/router/app_router.dart';
-import 'package:country_app_indra/cubits/country_cubit.dart';
-import 'package:country_app_indra/cubits/country_state.dart';
-import 'package:country_app_indra/ui/utils/country_utils.dart';
-import 'package:country_app_indra/ui/widgets/chips_wrap.dart';
-import 'package:country_app_indra/ui/widgets/country_details_header.dart';
-import 'package:country_app_indra/ui/widgets/details_section_card.dart';
-import 'package:country_app_indra/ui/widgets/home_background.dart';
-import 'package:country_app_indra/ui/widgets/key_value_wrap.dart';
-import 'package:country_app_indra/ui/widgets/network_image_card.dart';
+import 'package:country_app_indra/countries/cubits/country_cubit.dart';
+import 'package:country_app_indra/countries/cubits/country_state.dart';
+import 'package:country_app_indra/countries/ui/utils/country_utils.dart';
+import 'package:country_app_indra/countries/ui/widgets/chips_wrap.dart';
+import 'package:country_app_indra/countries/ui/widgets/country_details_header.dart';
+import 'package:country_app_indra/countries/ui/widgets/details_section_card.dart';
+import 'package:country_app_indra/countries/ui/widgets/home_background.dart';
+import 'package:country_app_indra/countries/ui/widgets/key_value_wrap.dart';
+import 'package:country_app_indra/countries/ui/widgets/network_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -41,7 +41,7 @@ class CountryDetailsPage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             leading: IconButton(
-              onPressed: () => context.goNamed(AppRoutes.home.name),
+              onPressed: () => context.goNamed(AppRoutes.countryHome.name),
               icon: const Icon(Icons.arrow_back),
             ),
           ),

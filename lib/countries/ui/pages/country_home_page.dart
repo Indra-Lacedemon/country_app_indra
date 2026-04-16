@@ -1,18 +1,18 @@
 import 'package:country_app_indra/core/locator/locator.dart';
 import 'package:country_app_indra/core/router/app_router.dart';
-import 'package:country_app_indra/cubits/country_cubit.dart';
-import 'package:country_app_indra/cubits/country_state.dart';
-import 'package:country_app_indra/ui/utils/country_utils.dart';
-import 'package:country_app_indra/ui/widgets/country_detail_card.dart';
-import 'package:country_app_indra/ui/widgets/featured_countries_selector.dart';
-import 'package:country_app_indra/ui/widgets/home_background.dart';
-import 'package:country_app_indra/ui/widgets/home_header.dart';
+import 'package:country_app_indra/countries/cubits/country_cubit.dart';
+import 'package:country_app_indra/countries/cubits/country_state.dart';
+import 'package:country_app_indra/countries/ui/utils/country_utils.dart';
+import 'package:country_app_indra/countries/ui/widgets/country_detail_card.dart';
+import 'package:country_app_indra/countries/ui/widgets/featured_countries_selector.dart';
+import 'package:country_app_indra/countries/ui/widgets/home_background.dart';
+import 'package:country_app_indra/countries/ui/widgets/home_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class CountryHomePage extends StatelessWidget {
+  const CountryHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
