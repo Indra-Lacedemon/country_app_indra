@@ -10,8 +10,10 @@ class StartAppCubit extends Cubit<StartAppState> {
     // Aquí puedes realizar cualquier inicialización necesaria, como verificar el estado de inicio de sesión del usuario.
     // Por ejemplo, podrías consultar una base de datos local o una API para determinar si el usuario ya ha iniciado sesión.
     // Luego, actualiza el estado con la información obtenida.
+
+    final bool isLogged = await AuthRepository.getDataRegister();
     emit(
-      state.copyWith(isLogged: false),
+      state.copyWith(isLogged: isLogged),
     ); // Ejemplo: suponemos que el usuario ya ha iniciado sesión.
   }
 
@@ -25,6 +27,10 @@ class StartAppCubit extends Cubit<StartAppState> {
       password: password,
     );
 
+    if (myUser != null) {
+      await AuthRepository.saveDataRegister(true);
+    }
+
     emit(state.copyWith(isLogged: true, authDTO: myUser));
   }
 
@@ -36,6 +42,9 @@ class StartAppCubit extends Cubit<StartAppState> {
       email: email,
       password: password,
     );
+    if (myUser != null) {
+      await AuthRepository.saveDataRegister(true);
+    }
     emit(state.copyWith(isLogged: true, authDTO: myUser));
   }
 }
