@@ -49,4 +49,10 @@ class AuthRepository {
 
     return isLogged ?? false;
   }
+
+  static Future<void> removeDataRegister() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.remove('isLogged');
+  }
 }

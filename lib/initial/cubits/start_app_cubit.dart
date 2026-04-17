@@ -18,6 +18,7 @@ class StartAppCubit extends Cubit<StartAppState> {
   }
 
   Future<void> logOut() async {
+    await AuthRepository.removeDataRegister();
     emit(state.copyWith(isLogged: false));
   }
 
