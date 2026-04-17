@@ -18,12 +18,15 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   refreshListenable: GoRouterRefreshStream(useBloc.stream),
   redirect: (context, state) {
-    if (useBloc.state.isLogged == false) {
-      return '/login';
+    if (state.uri.toString() == '/') {
+      if (useBloc.state.isLogged == false) {
+        return '/login';
+      }
+      if (useBloc.state.isLogged == true) {
+        return '/country';
+      }
     }
-    if (useBloc.state.isLogged == true) {
-      return '/country';
-    }
+
     // Aquí puedes implementar la lógica de redirección basada en el estado de inicio de sesión del usuario.
     // Por ejemplo, si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión.
     // Si el usuario ya ha iniciado sesión, permitirle acceder a las rutas protegidas.
@@ -55,7 +58,7 @@ final goRouter = GoRouter(
       path: '/register',
       name: AppRoutes.resgister.name,
       builder: (context, state) {
-        return CountryDetailsPage();
+        return RegisterPage();
       },
     ),
     GoRoute(

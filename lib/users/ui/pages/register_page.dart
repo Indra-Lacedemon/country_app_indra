@@ -1,6 +1,8 @@
+import 'package:country_app_indra/core/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 import 'package:country_app_indra/users/ui/utils/forms_utils.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -160,7 +162,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                 prefixIcon: Icon(Icons.lock_reset_outlined),
                               ),
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 20),
+                            TextButton(
+                              onPressed: () {
+                                context.goNamed(AppRoutes.login.name);
+                              },
+                              child: Text("Ir al acceso"),
+                            ),
+                            const SizedBox(height: 20),
                             FilledButton(
                               onPressed: _submitting ? null : _submit,
                               child: _submitting

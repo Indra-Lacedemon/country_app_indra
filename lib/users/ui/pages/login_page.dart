@@ -133,7 +133,14 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 20),
+                            TextButton(
+                              onPressed: () {
+                                context.goNamed(AppRoutes.resgister.name);
+                              },
+                              child: Text("Ir a registro"),
+                            ),
+                            const SizedBox(height: 20),
                             FilledButton(
                               onPressed: _submitting ? null : _submit,
                               child: _submitting

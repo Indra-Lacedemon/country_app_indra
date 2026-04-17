@@ -9,7 +9,7 @@ class StartAppCubit extends Cubit<StartAppState> {
     // Por ejemplo, podrías consultar una base de datos local o una API para determinar si el usuario ya ha iniciado sesión.
     // Luego, actualiza el estado con la información obtenida.
     emit(
-      state.copyWith(isLogged: true),
+      state.copyWith(isLogged: false),
     ); // Ejemplo: suponemos que el usuario ya ha iniciado sesión.
   }
 }
