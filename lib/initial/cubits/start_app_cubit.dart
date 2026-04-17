@@ -1,4 +1,6 @@
 import 'package:country_app_indra/initial/cubits/start_app_state.dart';
+import 'package:country_app_indra/users/data/models/auth_dto.dart';
+import 'package:country_app_indra/users/data/repositories/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StartAppCubit extends Cubit<StartAppState> {
@@ -11,5 +13,29 @@ class StartAppCubit extends Cubit<StartAppState> {
     emit(
       state.copyWith(isLogged: false),
     ); // Ejemplo: suponemos que el usuario ya ha iniciado sesión.
+  }
+
+  Future<void> logOut() async {
+    emit(state.copyWith(isLogged: false));
+  }
+
+  Future<void> logIn({required String email, required String password}) async {
+    AuthDTO? myUser = await AuthRepository.signIn(
+      email: email,
+      password: password,
+    );
+
+    emit(state.copyWith(isLogged: true, authDTO: myUser));
+  }
+
+  Future<void> register({
+    required String email,
+    required String password,
+  }) async {
+    AuthDTO? myUser = await AuthRepository.register(
+      email: email,
+      password: password,
+    );
+    emit(state.copyWith(isLogged: true, authDTO: myUser));
   }
 }

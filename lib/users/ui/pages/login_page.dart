@@ -1,4 +1,6 @@
+import 'package:country_app_indra/core/locator/locator.dart';
 import 'package:country_app_indra/core/router/app_router.dart';
+import 'package:country_app_indra/initial/cubits/start_app_cubit.dart';
 import 'package:country_app_indra/users/ui/utils/forms_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -32,7 +34,12 @@ class _LoginPageState extends State<LoginPage> {
 
     setState(() => _submitting = true);
     try {
-      context.goNamed(AppRoutes.countryHome.name);
+      // context.goNamed(AppRoutes.countryHome.name);
+
+      locator<StartAppCubit>().logIn(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
     } finally {
       if (mounted) setState(() => _submitting = false);
     }

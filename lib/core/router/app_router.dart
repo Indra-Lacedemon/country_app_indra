@@ -6,11 +6,27 @@ import 'package:country_app_indra/countries/ui/pages/country_home_page.dart';
 import 'package:country_app_indra/initial/cubits/start_app_cubit.dart';
 import 'package:country_app_indra/initial/ui/pages/initial_page.dart';
 import 'package:country_app_indra/users/ui/pages/login_page.dart';
+import 'package:country_app_indra/users/ui/pages/profile_page.dart';
 import 'package:country_app_indra/users/ui/pages/register_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
-enum AppRoutes { initial, login, resgister, countryHome, countryDetails }
+enum AppRoutes {
+  initial,
+  login,
+  resgister,
+  countryHome,
+  countryDetails,
+  profile,
+}
+
+final List<String> routesWithAuth = [
+  '/country',
+  '/country/countryDetails',
+  '/country/profile',
+];
+
+final List<String> routesWithOutAuth = ['/', '/login', '/register'];
 
 final useBloc = locator<StartAppCubit>();
 
@@ -18,15 +34,22 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   refreshListenable: GoRouterRefreshStream(useBloc.stream),
   redirect: (context, state) {
-    if (state.uri.toString() == '/') {
-      if (useBloc.state.isLogged == false) {
-        return '/login';
-      }
-      if (useBloc.state.isLogged == true) {
-        return '/country';
-      }
+    if (state.uri.toString() == '/' && useBloc.state.isLogged == false) {
+      return '/login';
+    }
+    if (state.uri.toString() == '/' && useBloc.state.isLogged == true) {
+      return '/country';
     }
 
+    if (useBloc.state.isLogged == false &&
+        routesWithAuth.contains(state.uri.toString())) {
+      return '/login';
+    }
+
+    if (useBloc.state.isLogged == true &&
+        routesWithOutAuth.contains(state.uri.toString())) {
+      return '/country';
+    }
     // Aquí puedes implementar la lógica de redirección basada en el estado de inicio de sesión del usuario.
     // Por ejemplo, si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión.
     // Si el usuario ya ha iniciado sesión, permitirle acceder a las rutas protegidas.
@@ -73,6 +96,13 @@ final goRouter = GoRouter(
           name: AppRoutes.countryDetails.name,
           builder: (context, state) {
             return CountryDetailsPage();
+          },
+        ),
+        GoRoute(
+          path: 'profile',
+          name: AppRoutes.profile.name,
+          builder: (context, state) {
+            return ProfilePage();
           },
         ),
       ],

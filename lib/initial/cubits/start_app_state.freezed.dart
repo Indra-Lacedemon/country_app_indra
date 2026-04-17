@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$StartAppState {
 
- bool? get isLogged;
+ bool? get isLogged; AuthDTO? get authDTO;
 /// Create a copy of StartAppState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $StartAppStateCopyWith<StartAppState> get copyWith => _$StartAppStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is StartAppState&&(identical(other.isLogged, isLogged) || other.isLogged == isLogged));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StartAppState&&(identical(other.isLogged, isLogged) || other.isLogged == isLogged)&&(identical(other.authDTO, authDTO) || other.authDTO == authDTO));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLogged);
+int get hashCode => Object.hash(runtimeType,isLogged,authDTO);
 
 @override
 String toString() {
-  return 'StartAppState(isLogged: $isLogged)';
+  return 'StartAppState(isLogged: $isLogged, authDTO: $authDTO)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $StartAppStateCopyWith<$Res>  {
   factory $StartAppStateCopyWith(StartAppState value, $Res Function(StartAppState) _then) = _$StartAppStateCopyWithImpl;
 @useResult
 $Res call({
- bool? isLogged
+ bool? isLogged, AuthDTO? authDTO
 });
 
 
@@ -62,10 +62,11 @@ class _$StartAppStateCopyWithImpl<$Res>
 
 /// Create a copy of StartAppState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLogged = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLogged = freezed,Object? authDTO = freezed,}) {
   return _then(_self.copyWith(
 isLogged: freezed == isLogged ? _self.isLogged : isLogged // ignore: cast_nullable_to_non_nullable
-as bool?,
+as bool?,authDTO: freezed == authDTO ? _self.authDTO : authDTO // ignore: cast_nullable_to_non_nullable
+as AuthDTO?,
   ));
 }
 
@@ -150,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? isLogged)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? isLogged,  AuthDTO? authDTO)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StartAppState() when $default != null:
-return $default(_that.isLogged);case _:
+return $default(_that.isLogged,_that.authDTO);case _:
   return orElse();
 
 }
@@ -171,10 +172,10 @@ return $default(_that.isLogged);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? isLogged)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? isLogged,  AuthDTO? authDTO)  $default,) {final _that = this;
 switch (_that) {
 case _StartAppState():
-return $default(_that.isLogged);case _:
+return $default(_that.isLogged,_that.authDTO);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +192,10 @@ return $default(_that.isLogged);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? isLogged)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? isLogged,  AuthDTO? authDTO)?  $default,) {final _that = this;
 switch (_that) {
 case _StartAppState() when $default != null:
-return $default(_that.isLogged);case _:
+return $default(_that.isLogged,_that.authDTO);case _:
   return null;
 
 }
@@ -206,10 +207,11 @@ return $default(_that.isLogged);case _:
 
 
 class _StartAppState implements StartAppState {
-  const _StartAppState({this.isLogged = null});
+  const _StartAppState({this.isLogged = null, this.authDTO = null});
   
 
 @override@JsonKey() final  bool? isLogged;
+@override@JsonKey() final  AuthDTO? authDTO;
 
 /// Create a copy of StartAppState
 /// with the given fields replaced by the non-null parameter values.
@@ -221,16 +223,16 @@ _$StartAppStateCopyWith<_StartAppState> get copyWith => __$StartAppStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StartAppState&&(identical(other.isLogged, isLogged) || other.isLogged == isLogged));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StartAppState&&(identical(other.isLogged, isLogged) || other.isLogged == isLogged)&&(identical(other.authDTO, authDTO) || other.authDTO == authDTO));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLogged);
+int get hashCode => Object.hash(runtimeType,isLogged,authDTO);
 
 @override
 String toString() {
-  return 'StartAppState(isLogged: $isLogged)';
+  return 'StartAppState(isLogged: $isLogged, authDTO: $authDTO)';
 }
 
 
@@ -241,7 +243,7 @@ abstract mixin class _$StartAppStateCopyWith<$Res> implements $StartAppStateCopy
   factory _$StartAppStateCopyWith(_StartAppState value, $Res Function(_StartAppState) _then) = __$StartAppStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool? isLogged
+ bool? isLogged, AuthDTO? authDTO
 });
 
 
@@ -258,10 +260,11 @@ class __$StartAppStateCopyWithImpl<$Res>
 
 /// Create a copy of StartAppState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLogged = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLogged = freezed,Object? authDTO = freezed,}) {
   return _then(_StartAppState(
 isLogged: freezed == isLogged ? _self.isLogged : isLogged // ignore: cast_nullable_to_non_nullable
-as bool?,
+as bool?,authDTO: freezed == authDTO ? _self.authDTO : authDTO // ignore: cast_nullable_to_non_nullable
+as AuthDTO?,
   ));
 }
 

@@ -1,4 +1,6 @@
+import 'package:country_app_indra/core/locator/locator.dart';
 import 'package:country_app_indra/core/router/app_router.dart';
+import 'package:country_app_indra/initial/cubits/start_app_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:country_app_indra/users/ui/utils/forms_utils.dart';
@@ -42,12 +44,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
     setState(() => _submitting = true);
     try {
-      await Future<void>.delayed(const Duration(milliseconds: 600));
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Registro UI lista. Aquí conectarás tu lógica.'),
-        ),
+      // await Future<void>.delayed(const Duration(milliseconds: 600));
+      // if (!mounted) return;
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   const SnackBar(
+      //     content: Text('Registro UI lista. Aquí conectarás tu lógica.'),
+      //   ),
+      // );
+
+      locator<StartAppCubit>().register(
+        email: _emailController.text,
+        password: _passwordController.text,
       );
     } finally {
       if (mounted) setState(() => _submitting = false);
